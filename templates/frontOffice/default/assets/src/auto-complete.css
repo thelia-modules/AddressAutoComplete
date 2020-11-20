@@ -1,0 +1,22 @@
+/*
+!* Google logo *!
+.pac-logo::after {
+    content: none;
+}
+
+!* Auto completion box *!
+.pac-container {
+    border: 1px solid #a5a5a5;
+    border-radius: 0 0 5px 5px;
+}
+
+!* Auto completion item on hover *!
+.pac-container > .pac-item {
+    background: #dedede;
+    cursor: pointer;
+}
+
+!* Auto completion item on hover *!
+.pac-container > .pac-item:hover {
+}
+*/

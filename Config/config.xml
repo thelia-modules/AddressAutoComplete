@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<config xmlns="http://thelia.net/schema/dic/config"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://thelia.net/schema/dic/config http://thelia.net/schema/dic/config/thelia-1.0.xsd">
+
+    <loops>
+        <!-- sample definition
+        <loop name="MySuperLoop" class="AddressAutoComplete\Loop\MySuperLoop" />
+        -->
+    </loops>
+
+    <forms>
+        <form name="addressautocomplete_configuration_form" class="AddressAutoComplete\Form\ConfigurationForm" />
+    </forms>
+
+    <commands>
+        <!--
+        <command class="AddressAutoComplete\Command\MySuperCommand" />
+        -->
+    </commands>
+
+    <!--
+    <services>
+
+    </services>
+    -->
+
+    <hooks>
+
+        <hook id="addressautocomplete.hooks" class="AddressAutoComplete\Hook\HookManager">
+            <tag name="hook.event_listener" event="module.configuration" type="back" method="onModuleConfigure" />
+        </hook>
+        <hook id="addressautocomplete.hook" class="AddressAutoComplete\Hook\FrontHook">
+            <tag name="hook.event_listener" event="main.after-javascript-include" type="front" method="importMapsApi"/>
+        </hook>
+
+        <hook id="addressautocomplete.hook.assets">
+            <tag name="hook.event_listener" event="main.javascript-initialization" type="front" templates="js:assets/dist/auto-complete.min.js" />
+            <tag name="hook.event_listener" event="main.stylesheet" type="front" templates="css:assets/dist/auto-complete.min.css"/>
+        </hook>
+    </hooks>
+
+    <!--
+    <exports>
+
+    </exports>
+    -->
+
+    <!--
+    <imports>
+
+    </imports>
+    -->
+</config>

@@ -1,0 +1,54 @@
+
+<div class="general-block-decorator">
+    <div class="title title-without-tabs">
+        Configuration du module d'auto complétion d'adresses
+    </div>
+
+    <div class="form-container">
+        <div class="row">
+            <div class="col-md-12">
+                {form name="addressautocomplete_configuration_form"}
+                    {if $form_error}<div class="alert alert-danger">{$form_error_message}</div>{/if}
+
+                    <form action="{url path="/admin/module/addressautocomplete/configuration"}" method="post">
+                        {form_hidden_fields form=$form}
+
+                        {include file = "includes/inner-form-toolbar.html"
+                        hide_flags = true
+                        page_url   = "{url path='/admin/module/AddressAutoComplete'}"
+                        close_url  = "{url path='/admin/modules'}"
+                        }
+
+
+                        {if $form_error}
+                        <div class="alert alert-danger">{$form_error_message}</div>
+                        {/if}
+
+                        {if $smarty.get.success}
+                        <div class="alert alert-success">Les données de configuration ont été mises à jour.</div>
+                        {/if}
+
+
+                        {form_field form=$form field='success_url'}
+                        <input type="hidden" name="{$name}" value="{url path={navigate to="current"}}"/>
+                        {/form_field}
+
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    {$data = null}
+                                    {render_form_field form=$form field="maps_places_api_key" value={$data}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <input type="submit" class="btn btn-success form-control">
+                            </div>
+                        </div>
+                    </form>
+                {/form}
+            </div>
+        </div>
+    </div>
+</div>
